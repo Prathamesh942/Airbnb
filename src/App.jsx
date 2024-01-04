@@ -1,12 +1,13 @@
 import { useState } from "react";
-import "./App.css";
+import "./styles/App.css";
+import Home from "./containers/Home";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>Airbnb</h1>
+      <Home />
     </>
   );
 }
