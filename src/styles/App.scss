@@ -14,23 +14,23 @@ body {
   align-items: center;
   padding-top: 5px;
   width: 100vw;
-}
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  font-size: 25px;
-  color: #fd5c63;
-  font-weight: bolder;
-}
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 25px;
+    color: #fd5c63;
+    font-weight: bolder;
+  }
 
-.navbar > ul {
-  width: 40vw;
-  max-width: 400px;
-  display: flex;
-  justify-content: space-around;
+  > ul {
+    width: 40vw;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 li {
@@ -48,30 +48,51 @@ li {
   align-items: center;
   font-size: 15px;
   gap: 10px;
-}
 
-input {
-  background: none;
-  border: none;
-}
+  .search-inp {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(188, 188, 188);
+  }
 
-select {
-  background: none;
-  border: none;
-  appearance: none;
-}
+  .flex1 {
+    flex: 2;
+  }
 
-.search-inp {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid rgb(188, 188, 188);
-}
-.flex1 {
-  flex: 2;
-}
+  .flex2 {
+    flex: 1;
+  }
 
-.flex2 {
-  flex: 1;
+  input {
+    background: none;
+    border: none;
+  }
+
+  select {
+    background: none;
+    border: none;
+    appearance: none;
+  }
+
+  &-end {
+    display: flex;
+    justify-content: space-between;
+
+    > .search-inp {
+      display: flex;
+      align-items: center;
+      border-right: none;
+    }
+
+    > button {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      border: none;
+      background-color: #fd5c63;
+      color: white;
+    }
+  }
 }
 
 .header {
@@ -80,22 +101,4 @@ select {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-}
-
-.search-bar-end {
-  display: flex;
-  justify-content: space-between;
-}
-.search-bar-end > .search-inp {
-  display: flex;
-  align-items: center;
-  border-right: none;
-}
-.search-bar-end > button {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  border: none;
-  background-color: #fd5c63;
-  color: white;
 }
