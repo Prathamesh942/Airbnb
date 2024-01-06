@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-function Navbar() {
+const SearchIcon = () => (
+  <svg
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 32 32"
+    style={{
+      display: "block",
+      fill: "none",
+      height: "16px",
+      width: "16px",
+      stroke: "currentColor",
+      strokeWidth: "4",
+      overflow: "visible",
+    }}
+    aria-hidden="true"
+    role="presentation"
+    focusable="false"
+    width="32"
+    height="32"
+  >
+    <path
+      fill="none"
+      d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9"
+      stroke="#FFFFFF"
+      strokeWidth="4px"
+    ></path>
+  </svg>
+);
+
+function Navbar({ scrolled, setScrolled }) {
   return (
     <nav className="navbar">
       <div className="logo">
@@ -12,11 +41,31 @@ function Navbar() {
         </svg>
         <span>airbnb</span>
       </div>
-      <ul>
-        <li>Stays</li>
-        <li>Experiences</li>
-        <li>Online Experiences</li>
-      </ul>
+      {!scrolled ? (
+        <ul>
+          <li>Stays</li>
+          <li>Experiences</li>
+          <li>Online Experiences</li>
+        </ul>
+      ) : (
+        <div className="search-bar-mini" onClick={() => setScrolled(0)}>
+          <div className="where search-inp flex1">
+            <span>Anywhere</span>
+          </div>
+          <div className="checkin search-inp flex2">
+            <span>Any week</span>
+          </div>
+          <div className="search-bar-mini-end flex1">
+            <div className="who search-inp">
+              <span>Add guest</span>
+            </div>
+            <button>
+              <SearchIcon />
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="profile">
         <span>Profile</span>
       </div>
@@ -26,35 +75,50 @@ function Navbar() {
 
 function Searchbar() {
   return (
-    <div className="search-bar">
-      <div className="where search-inp flex1">
-        <span>Where</span>
-        <input type="text" placeholder="Search destination" />
-      </div>
-      <div className="checkin search-inp flex2">
-        <span>Check in</span>
-        <span>Add date</span>
-      </div>
-      <div className="checkout search-inp flex2">
-        <span>Check out</span>
-        <span>Add date</span>
-      </div>
-      <div className="search-bar-end flex1">
-        <div className="who search-inp">
-          <span>Who</span>
-          <select></select>
+    <div className="search-bar-wrapper">
+      <div className="search-bar">
+        <div className="where search-inp flex1">
+          <span>Where</span>
+          <input type="text" placeholder="Search destination" />
         </div>
-        <button>Search</button>
+        <div className="checkin search-inp flex2">
+          <span>Check in</span>
+          <span>Add date</span>
+        </div>
+        <div className="checkout search-inp flex2">
+          <span>Check out</span>
+          <span>Add date</span>
+        </div>
+        <div className="search-bar-end flex1">
+          <div className="who search-inp">
+            <span>Who</span>
+            <select></select>
+          </div>
+          <button>
+            <SearchIcon />
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 function Header() {
+  const [scrolled, setScrolled] = useState(0);
+  const handlescroll = () => {
+    window.scrollY > 0 ? setScrolled(1) : setScrolled(0);
+  };
+  console.log(scrolled);
+  useEffect(() => {
+    window.addEventListener("scroll", handlescroll);
+    return () => {
+      window.removeEventListener("scroll", handlescroll);
+    };
+  }, []);
   return (
     <div className="header">
-      <Navbar />
-      <Searchbar />
+      <Navbar scrolled={scrolled} setScrolled={setScrolled} />
+      {scrolled == 0 ? <Searchbar /> : <></>}
     </div>
   );
 }
