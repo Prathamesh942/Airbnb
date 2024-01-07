@@ -24,8 +24,9 @@ const Star = () => (
 
 function Card({ stay }) {
   return (
-    <div className="card">
+    <div className="w-[23.5%]">
       <img
+        className=" aspect-square object-cover rounded-xl"
         src="https://a0.muscache.com/im/pictures/miso/Hosting-741726654862114190/original/8bfadc5b-2666-4af6-be1c-a339cc6a34f3.jpeg?im_w=720"
         alt=""
       />
@@ -44,7 +45,7 @@ function Card({ stay }) {
 
 function Cards() {
   return (
-    <div>
+    <div className=" w-screen px-20 py-5 flex flex-wrap gap-[2%] gap-y-12 ">
       {properties.map((stay) => (
         <Card stay={stay} />
       ))}
