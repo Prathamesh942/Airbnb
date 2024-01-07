@@ -11,13 +11,16 @@ function Caraousel({ destinations }) {
   const VwInPx = vwToPx(30);
   const presses = Math.floor((100 * 28) / VwInPx) - 2;
   const lst = destinations.map((destination) => (
-    <div style={{ transform: `translate(${tpx * 30}vw)` }}>
-      <img src={destination.imageUrl} alt="" />
-      <span>{destination.category}</span>
+    <div
+      style={{ transform: `translate(${tpx * 30}vw)` }}
+      className="flex flex-col items-center justify-center"
+    >
+      <img src={destination.imageUrl} alt="" className=" w-6" />
+      <span className=" text-xs">{destination.category}</span>
     </div>
   ));
   return (
-    <div>
+    <div className="flex">
       <button
         onClick={() => {
           console.log(destinations.length);
@@ -29,7 +32,7 @@ function Caraousel({ destinations }) {
       >
         &lt;
       </button>
-      <div>{lst}</div>
+      <div className="flex w-[60vw]">{lst}</div>
       <button
         onClick={() => {
           console.log(tpx, presses);
@@ -191,7 +194,7 @@ function Filter() {
   ];
 
   return (
-    <div>
+    <div className="w-screen h-24 bg-slate-600 flex mt-40 sticky top-20">
       <Caraousel destinations={destinations} />
       <button>
         <svg
