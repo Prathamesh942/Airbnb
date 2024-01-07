@@ -44,7 +44,7 @@ function Card({ stay }) {
 
 function Cards() {
   return (
-    <div className="cards">
+    <div>
       {properties.map((stay) => (
         <Card stay={stay} />
       ))}

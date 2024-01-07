@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <div className="footer-container">
-        <ul className="support-list">
+      <div>
+        <ul>
           <li>Help Centre</li>
           <li>AirCover</li>
           <li>Anti-discrimination</li>
@@ -13,7 +13,7 @@ const Footer = () => {
           <li>Report neighbourhood concern</li>
         </ul>
 
-        <ul className="hosting-list">
+        <ul>
           <li>Airbnb your home</li>
           <li>AirCover for Hosts</li>
           <li>Hosting resources</li>
@@ -21,7 +21,7 @@ const Footer = () => {
           <li>Hosting responsibly</li>
         </ul>
 
-        <ul className="airbnb-list">
+        <ul>
           <li>Newsroom</li>
           <li>New features</li>
           <li>Careers</li>

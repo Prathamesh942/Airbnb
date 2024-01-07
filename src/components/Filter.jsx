@@ -11,15 +11,14 @@ function Caraousel({ destinations }) {
   const VwInPx = vwToPx(30);
   const presses = Math.floor((100 * 28) / VwInPx) - 2;
   const lst = destinations.map((destination) => (
-    <div className="category" style={{ transform: `translate(${tpx * 30}vw)` }}>
-      <img src={destination.imageUrl} alt="" className="dest-img" />
-      <span className="dest-cat">{destination.category}</span>
+    <div style={{ transform: `translate(${tpx * 30}vw)` }}>
+      <img src={destination.imageUrl} alt="" />
+      <span>{destination.category}</span>
     </div>
   ));
   return (
-    <div className="carousel-wrapper">
+    <div>
       <button
-        className="prev car-button"
         onClick={() => {
           console.log(destinations.length);
           if (tpx == 0) {
@@ -30,9 +29,8 @@ function Caraousel({ destinations }) {
       >
         &lt;
       </button>
-      <div className="carousel">{lst}</div>
+      <div>{lst}</div>
       <button
-        className="next car-button"
         onClick={() => {
           console.log(tpx, presses);
           if (tpx * -1 >= presses) {
@@ -193,9 +191,9 @@ function Filter() {
   ];
 
   return (
-    <div className="filter">
+    <div>
       <Caraousel destinations={destinations} />
-      <button className="filter-btn">
+      <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
