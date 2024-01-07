@@ -8,12 +8,12 @@ function vwToPx(vwValue) {
 
 function Caraousel({ destinations }) {
   const [tpx, setTpx] = useState(0);
-  const VwInPx = vwToPx(30);
-  const presses = Math.floor((100 * 28) / VwInPx) - 2;
+  const VwInPx = vwToPx(40);
+  const presses = Math.floor((100 * 28) / VwInPx) - 1;
   const lst = destinations.map((destination) => (
     <div
-      style={{ transform: `translate(${tpx * 30}vw)` }}
-      className="flex flex-col items-center justify-center"
+      style={{ transform: `translate(${tpx * 40}vw)` }}
+      className="flex flex-col items-center justify-center min-w-24 transition-all duration-800"
     >
       <img src={destination.imageUrl} alt="" className=" w-6" />
       <span className=" text-xs">{destination.category}</span>
@@ -32,7 +32,7 @@ function Caraousel({ destinations }) {
       >
         &lt;
       </button>
-      <div className="flex w-[60vw]">{lst}</div>
+      <div className="flex w-[80vw] overflow-hidden">{lst}</div>
       <button
         onClick={() => {
           console.log(tpx, presses);
@@ -194,9 +194,9 @@ function Filter() {
   ];
 
   return (
-    <div className="w-screen h-24 bg-slate-600 flex mt-40 sticky top-20">
+    <div className=" bg-white w-screen h-24 px-20 border-t border-b flex justify-between items-center mt-44 sticky top-20 ">
       <Caraousel destinations={destinations} />
-      <button>
+      <button className="flex p-3 gap-3 rounded-xl border h-2/4 items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"

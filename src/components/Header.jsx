@@ -135,8 +135,8 @@ function Navbar({ scrolled, setScrolled }) {
 function Searchbar() {
   console.log("searchbar");
   return (
-    <div className="px-20 flex justify-cente fixed w-screen top-20 mt-0 z-20 bg-white h-20 pb-2">
-      <div className=" w-3/5 flex px-10 pr-2 items-center py-2 border-2 rounded-full gap-4 text-sm shadow mx-auto text-center">
+    <div className="px-20 flex justify-cente fixed w-screen top-20 mt-0 z-20 bg-white h-24 pb-2">
+      <div className=" w-3/5 flex px-10 pr-2 items-center py-2 border-2 rounded-full gap-4 text-sm shadow mx-auto text-center h-5/6">
         <div className="flex-[2_2_0%] border-r-2">
           <span className="font-medium text-xs">Where</span>
           <br />
