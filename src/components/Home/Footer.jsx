@@ -2,9 +2,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
-      <div>
-        <ul>
+    <footer className=" overflow-hidden">
+      <div className="flex px-20 py-10 justify-between border-t mt-8">
+        <ul className="flex flex-col gap-2">
           <li>Help Centre</li>
           <li>AirCover</li>
           <li>Anti-discrimination</li>
@@ -13,7 +13,7 @@ const Footer = () => {
           <li>Report neighbourhood concern</li>
         </ul>
 
-        <ul>
+        <ul className="flex flex-col gap-2">
           <li>Airbnb your home</li>
           <li>AirCover for Hosts</li>
           <li>Hosting resources</li>
@@ -21,7 +21,7 @@ const Footer = () => {
           <li>Hosting responsibly</li>
         </ul>
 
-        <ul>
+        <ul className="flex flex-col gap-2 text-right">
           <li>Newsroom</li>
           <li>New features</li>
           <li>Careers</li>

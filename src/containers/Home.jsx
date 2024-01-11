@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../components/Header";
-import Filter from "../components/Filter";
-import Cards from "../components/cards";
-import Footer from "../components/Footer";
+import Header from "../components/Home/Header";
+import Filter from "../components/Home/Filter";
+import Cards from "../components/Home/Cards";
+import Footer from "../components/Home/Footer";
 
 function Home() {
   return (

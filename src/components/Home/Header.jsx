@@ -81,9 +81,11 @@ const Hamburger = () => (
   </svg>
 );
 
-function Navbar({ scrolled, setScrolled }) {
+export function Navbar({ scrolled, setScrolled, padding = 20 }) {
   return (
-    <nav className=" fixed top-0 w-screen flex justify-between px-20 py-4 h-20 bg-white items-center z-10 ">
+    <nav
+      className={` fixed top-0 w-screen flex justify-between px-${padding} py-4 h-20 bg-white items-center z-10 `}
+    >
       <div className="flex items-center gap-2">
         <svg width="30" height="32" style={{ display: "block" }}>
           <path
@@ -102,7 +104,7 @@ function Navbar({ scrolled, setScrolled }) {
       ) : (
         <div
           onClick={() => setScrolled(0)}
-          className=" w-1/4 flex justify-between items-center rounded-full border-2 px-5 pr-2 py-2 gap-3 absolute left-2/4 transform -translate-x-1/2"
+          className=" w-1/4 flex justify-between items-center rounded-full border-2 px-3 pr-2 py-2 gap-3 absolute left-2/4 transform -translate-x-1/2"
         >
           <div className="flex-[2_2_0%] justify-center border-r-2">
             <span>Anywhere</span>
@@ -135,7 +137,7 @@ function Navbar({ scrolled, setScrolled }) {
 function Searchbar() {
   console.log("searchbar");
   return (
-    <div className="px-20 flex justify-cente fixed w-screen top-20 mt-0 z-20 bg-white h-24 pb-2">
+    <div className="px-20 flex justify-center fixed w-screen top-20 mt-0 z-20 bg-white h-24 pb-2">
       <div className=" w-3/5 flex px-10 pr-2 items-center py-2 border-2 rounded-full gap-4 text-sm shadow mx-auto text-center h-5/6">
         <div className="flex-[2_2_0%] border-r-2">
           <span className="font-medium text-xs">Where</span>
@@ -181,7 +183,7 @@ function Header() {
     };
   }, []);
   return (
-    <div className="header">
+    <div className="header overflow-hidden">
       <Navbar scrolled={scrolled} setScrolled={setScrolled} />
       {scrolled == 0 ? <Searchbar /> : <></>}
     </div>

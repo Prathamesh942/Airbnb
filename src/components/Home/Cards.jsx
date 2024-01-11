@@ -1,5 +1,5 @@
 import React from "react";
-import properties from "../data/property";
+import properties from "../../data/property";
 
 const Star = () => (
   <svg
@@ -22,33 +22,53 @@ const Star = () => (
   </svg>
 );
 
-function Card({ stay }) {
+function Card({ stay, width = 23.5 }) {
   return (
-    <div className="w-[23.5%]">
+    <div className={`w-[${width}%] flex flex-col`}>
       <img
         className=" aspect-square object-cover rounded-xl"
         src="https://a0.muscache.com/im/pictures/miso/Hosting-741726654862114190/original/8bfadc5b-2666-4af6-be1c-a339cc6a34f3.jpeg?im_w=720"
         alt=""
       />
-      <span className="card-heading">
+      <span className="flex justify-between">
         <span className="title">{stay.location}</span>
-        <span className="rating">
+        <span className="rating flex items-center gap-1">
           <Star />
           {stay.rating}
         </span>
       </span>
-      <span className="card-desc">{stay.description}</span>
+      <span className="card-desc">
+        {stay.description.split(" ")[0]} Kilometers away <br></br>
+        {stay.date}
+      </span>
       <span className="price">{stay.perNight.split(" ")[0]} night</span>
     </div>
   );
 }
 
+const guestLiked = (Card) => {
+  return (props) => {
+    return (
+      <div className="w-[23.5%] flex flex-col relative -z-10">
+        {props.stay.guestFavorite && (
+          <span className="absolute bg-white p-1 rounded-2xl px-2 top-[3%] left-[3%]">
+            Guest favourite
+          </span>
+        )}
+        <Card stay={props.stay} width={100} />
+      </div>
+    );
+  };
+};
+
+const LikedCard = guestLiked(Card);
+
 function Cards() {
   return (
-    <div className=" w-screen px-20 py-5 flex flex-wrap gap-[2%] gap-y-12 ">
-      {properties.map((stay) => (
-        <Card stay={stay} />
-      ))}
+    <div className=" w-screen px-20 py-5 flex flex-wrap gap-[2%] gap-y-12 overflow-hidden">
+      {properties.map((stay) =>
+        stay.guestFavorite ? <LikedCard stay={stay} /> : <Card stay={stay} />
+      )}
     </div>
   );
 }
