@@ -6,6 +6,7 @@ import StayDetail from "../components/StayPage/StayDetail"; // Assuming StayDeta
 import Booking from "../components/StayPage/Booking";
 import Calendar from "../components/StayPage/Calendar";
 import Reviews from "../components/StayPage/Reviews";
+import Footer from "../components/Home/Footer";
 import Map from "../components/StayPage/Map";
 import Host from "../components/StayPage/Host";
 
@@ -28,20 +29,20 @@ function StayPage() {
       <div className=" px-48 flex justify-center">
         <Gallery />
       </div>
-      <div className=" px-48 flex">
-        <div className="w-[60%]">
+      <div className=" px-48 flex py-10">
+        <div className="w-[60%] border-b border-gray-300">
           <StayDetail />
           <Calendar />
         </div>
-        <div className="w-[40%] flex justify-center items-start">
+        <div className="w-[40%] flex justify-end items-start border-b-2 border-gray-300">
           <Booking />
         </div>
       </div>
-      <div className=" px-48 flex justify-center">
+      <div className=" px-48 flex flex-col justify-center">
         <Reviews />
-        <Map />
         <Host />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 function Booking() {
   return (
-    <div className="w-[80%] bg-white p-6 flex flex-col gap-4 rounded-xl shadow-xl border border-gray-400 sticky top-24 bottom-0">
+    <div className="w-[80%] bg-white p-6 flex flex-col gap-4 rounded-xl shadow-xl border border-gray-400 sticky top-24">
       <span>
         <span className=" font-semibold text-2xl">₹20,000</span> night
       </span>

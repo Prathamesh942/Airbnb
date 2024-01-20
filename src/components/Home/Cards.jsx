@@ -1,5 +1,6 @@
 import React from "react";
 import properties from "../../data/property";
+import { Link } from "react-router-dom";
 
 const Star = () => (
   <svg
@@ -25,23 +26,25 @@ const Star = () => (
 function Card({ stay, width = 23.5 }) {
   return (
     <div className={`w-[${width}%] flex flex-col`}>
-      <img
-        className=" aspect-square object-cover rounded-xl"
-        src="https://a0.muscache.com/im/pictures/miso/Hosting-741726654862114190/original/8bfadc5b-2666-4af6-be1c-a339cc6a34f3.jpeg?im_w=720"
-        alt=""
-      />
-      <span className="flex justify-between">
-        <span className="title">{stay.location}</span>
-        <span className="rating flex items-center gap-1">
-          <Star />
-          {stay.rating}
+      <Link to="/stay">
+        <img
+          className=" aspect-square object-cover rounded-xl"
+          src="https://a0.muscache.com/im/pictures/miso/Hosting-741726654862114190/original/8bfadc5b-2666-4af6-be1c-a339cc6a34f3.jpeg?im_w=720"
+          alt=""
+        />
+        <span className="flex justify-between">
+          <span className="title">{stay.location}</span>
+          <span className="rating flex items-center gap-1">
+            <Star />
+            {stay.rating}
+          </span>
         </span>
-      </span>
-      <span className="card-desc">
-        {stay.description.split(" ")[0]} Kilometers away <br></br>
-        {stay.date}
-      </span>
-      <span className="price">{stay.perNight.split(" ")[0]} night</span>
+        <span className="card-desc">
+          {stay.description.split(" ")[0]} Kilometers away <br></br>
+          {stay.date}
+        </span>
+        <span className="price">{stay.perNight.split(" ")[0]} night</span>
+      </Link>
     </div>
   );
 }
