@@ -186,34 +186,14 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
 function Searchbar({setQuery}) {
   console.log("searchbar");
   return (
-    <div className="px-20 flex justify-center fixed w-screen top-20 mt-0 z-20 bg-white h-24 pb-2">
+    <div className=" flex justify-center fixed w-screen top-20 mt-0 z-20 bg-white h-24 pb-2">
       <div className=" w-3/5 flex px-10 pr-2 items-center py-2 border-2 rounded-full gap-4 text-sm shadow mx-auto text-center h-5/6">
         <div className="flex-[2_2_0%] border-r-2">
-          <span className="font-medium text-xs">Where</span>
-          <br />
-          <input className=" outline-none" onChange={(e)=>{setQuery(e.target.value)}} type="text" placeholder="Search destination" />
+          <input className=" outline-none text-xl" onChange={(e)=>{setQuery(e.target.value)}} type="text" placeholder="Search destination" />
         </div>
-        <div className="flex-1  border-r-2 border-r-2">
-          <span className="font-medium text-xs">Check in</span>
-          <br />
-          <span>Add dates</span>
-        </div>
-        <div className="flex-1  border-r-2">
-          <span className="font-medium text-xs">Check out</span>
-          <br />
-          <span>Add dates</span>
-        </div>
-        <div className="flex-[2_2_0%] flex justify-between">
-          <div>
-            <span className="font-medium text-xs">Who</span>
-            <br />
-            <label htmlFor="">Add guest</label>
-            <select></select>
-          </div>
-          <button className="bg-rose-500 w-12 h-12 rounded-full flex items-center justify-center">
+        <button className="bg-rose-500 w-12 h-12 rounded-full flex items-center justify-center">
             <SearchIcon />
           </button>
-        </div>
       </div>
     </div>
   );

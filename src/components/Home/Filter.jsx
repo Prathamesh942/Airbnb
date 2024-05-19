@@ -6,14 +6,15 @@ function vwToPx(vwValue) {
   return (vwValue * viewportWidth) / 100;
 }
 
-function Caraousel({ destinations }) {
+function Caraousel({ destinations, setCategory }) {
   const [tpx, setTpx] = useState(0);
   const VwInPx = vwToPx(40);
   const presses = Math.floor((100 * 28) / VwInPx) - 1;
   const lst = destinations.map((destination) => (
     <div
+    onClick={()=>{setCategory(destination.category)}}
       style={{ transform: `translate(${tpx * 40}vw)` }}
-      className="flex flex-col items-center justify-center min-w-24 transition-all duration-800"
+      className=" cursor-pointer flex flex-col items-center justify-center min-w-24 transition-all duration-800"
     >
       <img src={destination.imageUrl} alt="" className=" w-6" />
       <span className=" text-xs">{destination.category}</span>
@@ -49,20 +50,21 @@ function Caraousel({ destinations }) {
   );
 }
 
-function Filter() {
+['amazing-views','new','rooms','national-park','off-the-grid','design','farms','earth-homes','historical-homes','beach-front']
+function Filter({setCategory}) {
   const destinations = [
     {
-      category: "National parks",
+      category: "national-park",
       imageUrl:
         "https://a0.muscache.com/pictures/c0a24c04-ce1f-490c-833f-987613930eca.jpg",
     },
     {
-      category: "Amazing views",
+      category: "amazing-views",
       imageUrl:
         "https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg",
     },
     {
-      category: "New",
+      category: "new",
       imageUrl:
         "https://a0.muscache.com/pictures/c0fa9598-4e37-40f3-b734-4bd0e2377add.jpg",
     },
@@ -72,27 +74,27 @@ function Filter() {
         "https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg",
     },
     {
-      category: "Design",
+      category: "design",
       imageUrl:
         "https://a0.muscache.com/pictures/50861fca-582c-4bcc-89d3-857fb7ca6528.jpg",
     },
     {
-      category: "Farms",
+      category: "farms",
       imageUrl:
         "https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg",
     },
     {
-      category: "Earth homes",
+      category: "earth-homes",
       imageUrl:
         "https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg",
     },
     {
-      category: "Historical homes",
+      category: "historical-homes",
       imageUrl:
         "https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg",
     },
     {
-      category: "Beachfront",
+      category: "beach-front",
       imageUrl:
         "https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg",
     },
@@ -195,7 +197,7 @@ function Filter() {
 
   return (
     <div className=" bg-white w-[100%] h-20 px-20 border-t border-b flex justify-between items-center mt-44 sticky top-20 z-10 ">
-      <Caraousel destinations={destinations} />
+      <Caraousel destinations={destinations} setCategory={setCategory} />
       <button className="flex p-3 gap-3 rounded-xl border h-2/4 items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"

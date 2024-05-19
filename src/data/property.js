@@ -24,7 +24,8 @@ export const propertiess = [
         location: "Cambridge, Massachusetts",
         description: "This place was incredible, it lives up to the photos. Dimitris and his Etouri team were so friendly and always around if we had a question. Highly recommend!",
       }
-    ]
+    ],
+    category: ['amazing-views','new','rooms','design']
   },
   {
     id: "124abc",
@@ -51,7 +52,8 @@ export const propertiess = [
         location: "Sydney, Australia",
         description: "Amazing location and great amenities. Had a wonderful time!",
       }
-    ]
+    ],
+    category: ['amazing-views','new','design','beach-front']
   },
   {
     id: "125abc",
@@ -78,7 +80,8 @@ export const propertiess = [
         location: "Denver, Colorado",
         description: "The cabin was perfect, with all the amenities we needed. The views were spectacular!",
       }
-    ]
+    ],
+    category: ['amazing-views','new','rooms','off-the-grid']
   },
   {
     id: "126abc",
@@ -105,7 +108,8 @@ export const propertiess = [
         location: "London, UK",
         description: "Absolutely stunning villa. We had an amazing time and would love to come back!",
       }
-    ]
+    ],
+    category: ['amazing-views','off-the-grid','design','beach-front']
   },
   {
     id: "127abc",
@@ -132,7 +136,8 @@ export const propertiess = [
         location: "San Francisco, California",
         description: "Great location and very comfortable loft. Perfect for our stay in NYC!",
       }
-    ]
+    ],
+    category: ['new','rooms','design']
   },
   {
     id: "128abc",
@@ -159,7 +164,8 @@ export const propertiess = [
         location: "Melbourne, Australia",
         description: "Amazing bungalow with breathtaking views. Had a wonderful stay!",
       }
-    ]
+    ],
+    category: ['amazing-views','new','design','beach-front']
   },
   {
     id: "129abc",
@@ -186,7 +192,8 @@ export const propertiess = [
         location: "Manchester, UK",
         description: "An unforgettable experience. The castle was beautiful and the service was top-notch!",
       }
-    ]
+    ],
+    category: ['amazing-views','earth-homes','historical-homes']
   },
   {
     id: "130abc",
@@ -213,7 +220,8 @@ export const propertiess = [
         location: "Toronto, Canada",
         description: "Such a unique experience! Loved the treehouse and the beautiful surroundings.",
       }
-    ]
+    ],
+    category: ['amazing-views','off-the-grid','design','farms']
   },
   {
     id: "131abc",
@@ -240,7 +248,8 @@ export const propertiess = [
         location: "New York, USA",
         description: "Incredible penthouse with amazing views. A truly luxurious stay!",
       }
-    ]
+    ],
+    category: ['amazing-views','new','rooms','design']
   },
   {
     id: "132abc",
@@ -267,7 +276,8 @@ export const propertiess = [
         location: "Bristol, UK",
         description: "Lovely cottage with great views. Very relaxing stay!",
       }
-    ]
+    ],
+    category: ['amazing-views','off-the-grid','design','earth-homes']
   },
   {
     id: "133abc",
@@ -294,6 +304,7 @@ export const propertiess = [
         location: "Mumbai, India",
         description: "Fantastic apartment in a great location. Had a wonderful time!",
       }
-    ]
+    ],
+    category: ['amazing-views','new','rooms','design']
   }
 ];

@@ -82,20 +82,45 @@ const guestLiked = (Card) => {
 
 const LikedCard = guestLiked(Card);
 
-function Cards({query}) {
+function Cards({ query, category, setCategory, setQuery }) {
   const [filtered, setFiltered] = useState(propertiess);
   const [loading, setLoading] = useState(true);
-  useEffect(()=>{
-    setFiltered(propertiess.filter((prp)=>{return prp.location.toLowerCase().includes(query.toLowerCase())}))
+
+  useEffect(() => {
+    let filteredProperties = propertiess;
+
+    if (query) {
+      filteredProperties = filteredProperties.filter(prp => 
+        prp.location.toLowerCase().includes(query.toLowerCase())
+      );
+    }
+
+    if (category) {
+      filteredProperties = filteredProperties.filter(prp => 
+        prp.category && prp.category.includes(category)
+      );
+    }
+
+    setFiltered(filteredProperties);
     setLoading(false);
-  },[query])
-  if(loading){
-    return <span>Loading</span>
+    console.log(filteredProperties);
+  }, [query, category]);
+
+  if (loading) {
+    return <span>Loading</span>;
   }
+  if(filtered.length==0){
+    return <span className=" w-[100%] flex justify-center items-center gap-5 py-10">Sorry no more results! <button className="bg-rose-500 rounded-lg text-white px-2 py-1" onClick={()=>{setCategory(''); setQuery('');}}>Reset filter</button></span>
+  }
+
   return (
-    <div className=" w-[100%] px-20 py-5 flex flex-wrap gap-[2%] gap-y-12">
-      {filtered.map((stay) =>
-        stay.guestFavorite ? <LikedCard stay={stay} images={stay.images} /> : <Card stay={stay}/>
+    <div className="w-[100%] px-20 py-5 flex flex-wrap gap-[2%] gap-y-12">
+      {filtered.map((stay, index) =>
+        stay.guestFavorite ? (
+          <LikedCard key={index} stay={stay} images={stay.images} />
+        ) : (
+          <Card key={index} stay={stay} />
+        )
       )}
     </div>
   );

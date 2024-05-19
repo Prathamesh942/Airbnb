@@ -8,12 +8,14 @@ import Signup from "./Signup";
 
 function Home() {
   const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('');
+  console.log(category);
   console.log(query);
   return (
     <div>
       <Header setQuery={setQuery}/>
-      <Filter />
-      <Cards query={query}/>
+      <Filter setCategory={setCategory} />
+      <Cards query={query} category={category} setQuery={setQuery} setCategory={setCategory}/>
       <Footer />
     </div>
   );
