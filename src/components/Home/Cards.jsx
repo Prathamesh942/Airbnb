@@ -1,6 +1,6 @@
-import React from "react";
-import properties from "../../data/property";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { propertiess } from "../../data/property";
+import { Link, useNavigate } from "react-router-dom";
 
 const Star = () => (
   <svg
@@ -23,28 +23,44 @@ const Star = () => (
   </svg>
 );
 
-function Card({ stay, width = 23.5 }) {
+function Card({ stay, width = 23.5, images }) {
+  console.log(images);
+  const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
   return (
     <div className={`w-[${width}%] flex flex-col`}>
-      <Link to="/stay">
-        <img
-          className=" aspect-square object-cover rounded-xl"
-          src="https://a0.muscache.com/im/pictures/miso/Hosting-741726654862114190/original/8bfadc5b-2666-4af6-be1c-a339cc6a34f3.jpeg?im_w=720"
-          alt=""
-        />
+        <div className=" flex  items-center" onClick={()=>{navigate(`/stay/${stay.id}`)}}>
+          <button className=" absolute " onClick={(e)=>{e.stopPropagation(); current==0?setCurrent(4):setCurrent(current-1)}}>
+            <img className=" w-6  rounded-full" src="https://www.svgrepo.com/show/7574/round-left-button.svg" alt="" />
+          </button>
+          <img
+            className=" aspect-square object-cover rounded-xl"
+            src={stay.images[current]}
+            alt=""
+          />
+          <button className=" absolute right-0" onClick={(e)=>{e.stopPropagation(); setCurrent((current+1)%5)}}>
+            <img className=" w-6 rounded-full scale-x-[-1]" src="https://www.svgrepo.com/show/7574/round-left-button.svg" alt="" />
+          </button>
+        </div>
         <span className="flex justify-between">
           <span className="title">{stay.location}</span>
           <span className="rating flex items-center gap-1">
             <Star />
-            {stay.rating}
+            {stay.rating.reduce((accumulator, currentValue, index, array) => {
+  accumulator += currentValue;
+  // If it's the last element, divide by the length of the array to get the average
+  if (index === array.length - 1) {
+    return accumulator / array.length;
+  }
+  return accumulator;
+}, 0)/5}
           </span>
         </span>
         <span className="card-desc">
-          {stay.description.split(" ")[0]} Kilometers away <br></br>
+          {/* {stay.description.split(" ")[0]} Kilometers away <br></br> */}
           {stay.date}
         </span>
         <span className="price">{stay.perNight.split(" ")[0]} night</span>
-      </Link>
     </div>
   );
 }
@@ -52,7 +68,7 @@ function Card({ stay, width = 23.5 }) {
 const guestLiked = (Card) => {
   return (props) => {
     return (
-      <div className="w-[23.5%] flex flex-col relative -z-10">
+      <div className="w-[23.5%] flex flex-col relative ">
         {props.stay.guestFavorite && (
           <span className="absolute bg-white p-1 rounded-2xl px-2 top-[3%] left-[3%]">
             Guest favourite
@@ -68,9 +84,9 @@ const LikedCard = guestLiked(Card);
 
 function Cards() {
   return (
-    <div className=" w-screen px-20 py-5 flex flex-wrap gap-[2%] gap-y-12 overflow-hidden">
-      {properties.map((stay) =>
-        stay.guestFavorite ? <LikedCard stay={stay} /> : <Card stay={stay} />
+    <div className=" w-[100%] px-20 py-5 flex flex-wrap gap-[2%] gap-y-12">
+      {propertiess.map((stay) =>
+        stay.guestFavorite ? <LikedCard stay={stay} images={propertiess.images} /> : <Card stay={stay}/>
       )}
     </div>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import reviewsdata from "../../data/reviews";
 
 function Clean() {
   return (
@@ -22,18 +21,8 @@ function Clean() {
 }
 
 function Rating({
-  clean,
-  accuracy,
-  checkin,
-  communication,
-  location,
-  value,
-  count,
-  overallRating,
+  overallRating
 }) {
-  let avg = Math.trunc(
-    (clean + accuracy + checkin + communication + location + value) / 6
-  );
   let ratings = [];
   for (let i = 0; i < overallRating.length; i++) {
     ratings.push(
@@ -58,60 +47,17 @@ function Rating({
           <span>Overall rating</span>
           <div>{ratings}</div>
         </li>
-        <li className=" border-l py-2 px-5 flex flex-col justify-between">
-          <div className="flex flex-col">
-            <span>Cleaniness</span>
-            <span>4.8</span>
-          </div>
-          <Clean />
-        </li>{" "}
-        <li className=" border-l py-2 px-5 flex flex-col justify-between">
-          <div className="flex flex-col">
-            <span>Cleaniness</span>
-            <span>4.8</span>
-          </div>
-          <Clean />
-        </li>
-        <li className=" border-l py-2 px-5 flex flex-col justify-between">
-          <div className="flex flex-col">
-            <span>Cleaniness</span>
-            <span>4.8</span>
-          </div>
-          <Clean />
-        </li>{" "}
-        <li className=" border-l py-2 px-5 flex flex-col justify-between">
-          <div className="flex flex-col">
-            <span>Cleaniness</span>
-            <span>4.8</span>
-          </div>
-          <Clean />
-        </li>{" "}
-        <li className=" border-l py-2 px-5 flex flex-col justify-between">
-          <div className="flex flex-col">
-            <span>Cleaniness</span>
-            <span>4.8</span>
-          </div>
-          <Clean />
-        </li>{" "}
-        <li className=" border-l py-2 px-5 flex flex-col justify-between">
-          <div className="flex flex-col">
-            <span>Cleaniness</span>
-            <span>4.8</span>
-          </div>
-          <Clean />
-        </li>
       </ul>
     </div>
   );
 }
 
-function Comment() {
-  const comments = reviewsdata.map((cmt) => (
+function Comment({reviews}) {
+  const comments = reviews.map((cmt) => (
     <div className=" w-[50%] min-w-[50%] flex flex-col gap-2 pr-10 my-5">
       <span className=" font-semibold">{cmt.name}</span>
       <span className=" text-gray-600">{cmt.location}</span>
       <div>
-        <span>{cmt.rating}</span>
         <span>{cmt.date}</span>
       </div>
       <p>{cmt.description}</p>
@@ -120,7 +66,7 @@ function Comment() {
   return <div className="flex flex-wrap justify-between">{comments}</div>;
 }
 
-function Reviews() {
+function Reviews({rating, reviews}) {
   return (
     <div className=" w-[100%] mt-10">
       <Rating
@@ -131,9 +77,9 @@ function Reviews() {
         location={4}
         value={4.7}
         count={56}
-        overallRating={[75, 20, 5, 0, 0]}
+        overallRating={rating}
       />
-      <Comment />
+      <Comment reviews={reviews} />
     </div>
   );
 }

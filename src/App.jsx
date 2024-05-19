@@ -4,18 +4,21 @@ import "./index.css";
 import Home from "./containers/Home";
 import StayPage from "./containers/StayPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Booking from "./containers/Booking";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
     },
     {
-      path: "/stay",
+      path: "/stay/:id",
       element: <StayPage />,
+    },
+    {
+      path: "/book",
+      element: <Booking />,
     },
   ]);
 

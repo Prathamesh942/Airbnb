@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" overflow-hidden">
+    <footer className="w-[100%]">
       <div className="flex px-20 py-10 justify-between border-t mt-8">
         <ul className="flex flex-col gap-2">
           <li>Help Centre</li>

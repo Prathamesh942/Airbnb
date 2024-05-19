@@ -194,7 +194,7 @@ function Filter() {
   ];
 
   return (
-    <div className=" bg-white w-screen h-20 px-20 border-t border-b flex justify-between items-center mt-44 sticky top-20 overflow-hidden">
+    <div className=" bg-white w-[100%] h-20 px-20 border-t border-b flex justify-between items-center mt-44 sticky top-20 z-10 ">
       <Caraousel destinations={destinations} />
       <button className="flex p-3 gap-3 rounded-xl border h-2/4 items-center">
         <svg
