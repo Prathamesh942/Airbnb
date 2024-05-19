@@ -86,7 +86,7 @@ function Cards({query}) {
   const [filtered, setFiltered] = useState(propertiess);
   const [loading, setLoading] = useState(true);
   useEffect(()=>{
-    setFiltered(propertiess.filter((prp)=>{return prp.location.includes(query)}))
+    setFiltered(propertiess.filter((prp)=>{return prp.location.toLowerCase().includes(query.toLowerCase())}))
     setLoading(false);
   },[query])
   if(loading){
