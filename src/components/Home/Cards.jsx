@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { propertiess } from "../../data/property";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -82,11 +82,20 @@ const guestLiked = (Card) => {
 
 const LikedCard = guestLiked(Card);
 
-function Cards() {
+function Cards({query}) {
+  const [filtered, setFiltered] = useState(propertiess);
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
+    setFiltered(propertiess.filter((prp)=>{return prp.location.includes(query)}))
+    setLoading(false);
+  },[query])
+  if(loading){
+    return <span>Loading</span>
+  }
   return (
     <div className=" w-[100%] px-20 py-5 flex flex-wrap gap-[2%] gap-y-12">
-      {propertiess.map((stay) =>
-        stay.guestFavorite ? <LikedCard stay={stay} images={propertiess.images} /> : <Card stay={stay}/>
+      {filtered.map((stay) =>
+        stay.guestFavorite ? <LikedCard stay={stay} images={stay.images} /> : <Card stay={stay}/>
       )}
     </div>
   );

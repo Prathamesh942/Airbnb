@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Home/Header";
 import Filter from "../components/Home/Filter";
 import Cards from "../components/Home/Cards";
@@ -7,11 +7,13 @@ import Login from "./Login";
 import Signup from "./Signup";
 
 function Home() {
+  const [query, setQuery] = useState('');
+  console.log(query);
   return (
     <div>
-      <Header />
+      <Header setQuery={setQuery}/>
       <Filter />
-      <Cards />
+      <Cards query={query}/>
       <Footer />
     </div>
   );

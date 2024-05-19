@@ -183,7 +183,7 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
   );
 }
 
-function Searchbar() {
+function Searchbar({setQuery}) {
   console.log("searchbar");
   return (
     <div className="px-20 flex justify-center fixed w-screen top-20 mt-0 z-20 bg-white h-24 pb-2">
@@ -191,7 +191,7 @@ function Searchbar() {
         <div className="flex-[2_2_0%] border-r-2">
           <span className="font-medium text-xs">Where</span>
           <br />
-          <input type="text" placeholder="Search destination" />
+          <input className=" outline-none" onChange={(e)=>{setQuery(e.target.value)}} type="text" placeholder="Search destination" />
         </div>
         <div className="flex-1  border-r-2 border-r-2">
           <span className="font-medium text-xs">Check in</span>
@@ -219,7 +219,7 @@ function Searchbar() {
   );
 }
 
-function Header() {
+function Header({setQuery}) {
   const [scrolled, setScrolled] = useState(0);
   const handlescroll = () => {
     window.scrollY > 0 ? setScrolled(1) : setScrolled(0);
@@ -234,7 +234,7 @@ function Header() {
   return (
     <div className="header w-[100%]">
       <Navbar scrolled={scrolled} setScrolled={setScrolled} />
-      {scrolled == 0 ? <Searchbar /> : <></>}
+      {scrolled == 0 ? <Searchbar setQuery={setQuery} /> : <></>}
     </div>
   );
 }
