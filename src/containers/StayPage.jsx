@@ -33,7 +33,7 @@ function StayPage() {
   return (
     <div>
       <Navbar scrolled={0} padding={48} />
-      <div className=" px-48 flex justify-center py-7">
+      <div className=" px-48 max-md:px-10 flex justify-center py-7">
         <div className="flex justify-between mt-20 w-screen">
           <span className=" text-3xl font-medium">
             {property.heading}
@@ -45,20 +45,20 @@ function StayPage() {
         </div>
       </div>
 
-      <div className=" px-48 flex justify-center">
+      <div className=" px-48 max-md:px-10 flex justify-center">
         <Gallery images={property.images} />
       </div>
-      <div className=" px-48 flex py-10">
-        <div className="w-[60%] border-b border-gray-300">
+      <div className=" px-48 max-md:px-10 flex py-10 max-md:flex-col max-md:justify-center max-md:items-center">
+        <div className="w-[60%] border-b border-gray-300 max-md:w-[100%]">
         {/* subheading, guests, bedrooms, beds, bathrooms, host,exp,description,offer */}
           <StayDetail subheading={property.subheading} guests={property.guests} bedrooms={property.bedrooms} beds={property.beds} bathrooms={property.bathrooms} host={property.host} exp={property.exp} description={property.description} offer={property.offer}/>
           <Calendar />
         </div>
-        <div className="w-[40%] flex justify-end items-start border-b-2 border-gray-300">
+        <div className="w-[40%] flex justify-end items-start border-b-2 border-gray-300 max-md:w-[100%] max-md:justify-center">
           <Booking />
         </div>
       </div>
-      <div className=" px-48 flex flex-col justify-center">
+      <div className=" px-48 max-md:px-10 flex flex-col justify-center">
         <Reviews rating={property.rating} reviews={property.reviews} />
         <Host />
       </div>

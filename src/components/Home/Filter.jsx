@@ -50,7 +50,7 @@ function Caraousel({ destinations, setCategory }) {
   );
 }
 
-['amazing-views','new','rooms','national-park','off-the-grid','design','farms','earth-homes','historical-homes','beach-front']
+
 function Filter({setCategory}) {
   const destinations = [
     {
@@ -196,32 +196,8 @@ function Filter({setCategory}) {
   ];
 
   return (
-    <div className=" bg-white w-[100%] h-20 px-20 border-t border-b flex justify-between items-center mt-44 sticky top-20 z-10 ">
+    <div className=" bg-white w-[100%] h-20 px-20 max-md:px-10 border-t border-b flex justify-between items-center mt-44 sticky top-20 z-10 ">
       <Caraousel destinations={destinations} setCategory={setCategory} />
-      <button className="flex p-3 gap-3 rounded-xl border h-2/4 items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 32 32"
-          style={{
-            display: "block",
-            fill: "none",
-            height: "16px",
-            width: "16px",
-            stroke: "currentColor",
-            strokeWidth: "3",
-            overflow: "visible",
-          }}
-          aria-hidden="true"
-          role="presentation"
-          focusable="false"
-        >
-          <path
-            fill="none"
-            d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3"
-          ></path>
-        </svg>
-        Filters
-      </button>
     </div>
   );
 }

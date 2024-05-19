@@ -68,7 +68,7 @@ function Card({ stay, width = 23.5, images }) {
 const guestLiked = (Card) => {
   return (props) => {
     return (
-      <div className="w-[23.5%] flex flex-col relative ">
+      <div className="w-[23.5%] max-md:w-[32%] max-sm:w-[49%] flex flex-col relative ">
         {props.stay.guestFavorite && (
           <span className="absolute bg-white p-1 rounded-2xl px-2 top-[3%] left-[3%]">
             Guest favourite
@@ -114,7 +114,7 @@ function Cards({ query, category, setCategory, setQuery }) {
   }
 
   return (
-    <div className="w-[100%] px-20 py-5 flex flex-wrap gap-[2%] gap-y-12">
+    <div className="w-[100%] px-20 max-md:px-10 py-5 flex flex-wrap gap-[2%] gap-y-12">
       {filtered.map((stay, index) =>
         stay.guestFavorite ? (
           <LikedCard key={index} stay={stay} images={stay.images} />

@@ -90,7 +90,7 @@ function Calendar() {
   const [month, setMonth] = useState(currentDate.getMonth() + 1);
   const [year, setYear] = useState(currentDate.getFullYear());
   return (
-    <div className="w-[90%] flex justify-between gap-12 my-6">
+    <div className="w-[90%] flex justify-between gap-12 my-6 max-md:hidden">
       <table className="border-collapse separate border-spacing-20">
         <div className="flex justify-between pr-[50%] my-6">
           <button

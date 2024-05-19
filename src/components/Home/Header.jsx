@@ -86,6 +86,7 @@ const Hamburger = () => (
 
 export function Navbar({ scrolled, setScrolled, padding = 20 }) {
   const [profileclicked, setprofileclicked] = useState(false);
+  const [open, setOpen] = useState(false);
   const [auth, setauth] = useState(null);
   console.log(auth);
   return (
@@ -94,7 +95,6 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
         <Login
           setauth={function close() {
             setauth(null);
-            console.log("hii from passed func");
           }}
         />
       ) : auth == "signup" ? (
@@ -103,7 +103,7 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
         <></>
       )}
       <nav
-        className={` fixed top-0 w-screen flex z-30 justify-between px-${padding} py-4 h-20 bg-white items-center z-10 `}
+        className={` fixed top-0 w-screen flex z-30 justify-between px-${padding} py-4 h-20 bg-white items-center z-10 max-md:px-10`}
       >
         <Link to="/">
           <div className="flex items-center gap-2">
@@ -117,7 +117,7 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
           </div>
         </Link>
         {!scrolled ? (
-          <ul className="flex justify-between w-2/4 max-w-80 absolute left-2/4 transform -translate-x-1/2">
+          <ul className="flex justify-between w-2/4 max-w-80 absolute left-2/4 transform -translate-x-1/2 max-md:hidden ">
             <li>Stays</li>
             <li>Experiences</li>
             <li>Online Experiences</li>
@@ -125,7 +125,7 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
         ) : (
           <div
             onClick={() => setScrolled(0)}
-            className=" w-1/4 flex justify-between items-center rounded-full border-2 px-3 pr-2 py-2 gap-3 absolute left-2/4 transform -translate-x-1/2"
+            className=" w-1/4 flex justify-between items-center rounded-full border-2 px-3 pr-2 py-2 gap-3 absolute left-2/4 transform -translate-x-1/2 max-md:hidden"
           >
             <div className="flex-[2_2_0%] justify-center border-r-2">
               <span>Anywhere</span>
@@ -142,7 +142,7 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
           </div>
         )}
         <div className="flex gap-5 items-center relative cursor-pointer">
-          <span>Switch to hosting</span>
+          <span className=" max-sm:hidden">Switch to hosting</span>
           <Globe />
           <div
             className="flex items-center gap-4 border-2 p-2 rounded-full"
@@ -178,6 +178,35 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
             <></>
           )}
         </div>
+        <div className="md:hidden">
+        <button className="" onClick={() => setOpen(!open)}>
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 8h16M4 12h16M4 16h16"
+          ></path>
+        </svg>
+      </button>
+      <nav
+        className={` flex gap-5 font-medium justify-start items-start ${
+          open
+            ? "flex-col absolute right-0 top-16 p-3 bg-white"
+            : "hidden"
+        }`}
+      >
+        <button>Stays </button>
+        <button>Experience </button>
+        <button>Online experience</button>
+      </nav>
+        </div>
       </nav>
     </>
   );
@@ -186,12 +215,12 @@ export function Navbar({ scrolled, setScrolled, padding = 20 }) {
 function Searchbar({setQuery}) {
   console.log("searchbar");
   return (
-    <div className=" flex justify-center fixed w-screen top-20 mt-0 z-20 bg-white h-24 pb-2">
+    <div className=" flex justify-center fixed w-screen top-20 mt-0 z-20 bg-white h-24 max-md:h-16 pb-2 min-w-[400px]">
       <div className=" w-3/5 flex px-10 pr-2 items-center py-2 border-2 rounded-full gap-4 text-sm shadow mx-auto text-center h-5/6">
         <div className="flex-[2_2_0%] border-r-2">
-          <input className=" outline-none text-xl" onChange={(e)=>{setQuery(e.target.value)}} type="text" placeholder="Search destination" />
+          <input className=" outline-none text-xl max-md:text-sm" onChange={(e)=>{setQuery(e.target.value)}} type="text" placeholder="Search destination" />
         </div>
-        <button className="bg-rose-500 w-12 h-12 rounded-full flex items-center justify-center">
+        <button className="bg-rose-500 w-12 h-12 rounded-full flex items-center justify-center max-md:w-8 max-md:h-8 aspect-square">
             <SearchIcon />
           </button>
       </div>
